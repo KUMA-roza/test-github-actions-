@@ -6,6 +6,7 @@ on:
 
 jobs:
   say-hello:
+    if: false # This job disabled
     runs-on: ubuntu-latest
     steps:
       - name: Create greeting file
@@ -18,6 +19,7 @@ jobs:
           path: greeting.txt
 
   read-greeting:
+    if: false # This job disabled
     needs: say-hello
     runs-on: ubuntu-latest
     steps:
