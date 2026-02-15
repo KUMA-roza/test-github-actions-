@@ -1,4 +1,6 @@
 name: Hello World
+# on: [push, pull_request]のように、複数のイベントを指定することもできます。
+# ただし、細かい条件は[]で指定する時はできません。
 on:
     push:
         branches:
@@ -10,6 +12,9 @@ jobs:
             kuma: ${{ steps.set-kuma.outputs.kuma }}
         steps:
             - id: set-kuma
+            # $GITHUB_OUTPUTは、GitHub Actionsの特定のファイルで、ジョブのステップから出力値を設定するために使用されます。
+            # kuma=nyankoは、key=valueの形式で、kumaという名前の出力変数にnyankoという値を設定しています。
+            # これは$GITHUB_OUTPUTのお作法！
               run: echo "kuma=nyanko" >> $GITHUB_OUTPUT
     read-greeting:
         needs: say-hello
@@ -23,4 +28,5 @@ jobs:
             poepoe: waaan
         steps:
             - name: Echo poepoe
+            # envはそのまま$hogeで呼び出せる
               run: echo "The poepoe is $poepoe"
