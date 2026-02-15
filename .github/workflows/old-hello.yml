@@ -17,3 +17,10 @@ jobs:
         steps:
             - name: Read Greeting
               run: echo "The kuma is ${{ needs.say-hello.outputs.kuma }}"
+    echo-env-val:
+        runs-on: ubuntu-latest
+        env:
+            poepoe: waaan
+        steps:
+            - name: Echo poepoe
+              run: echo "The poepoe is $poepoe"
