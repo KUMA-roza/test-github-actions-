@@ -1,0 +1,27 @@
+{
+  "name": "test-github-actions-",
+  "version": "1.0.0",
+  "description": "GitHub Actionsの基本的な概念と実用的なパターンを学ぶためのリポジトリです。",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KUMA-roza/test-github-actions-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KUMA-roza/test-github-actions-/issues"
+  },
+  "homepage": "https://github.com/KUMA-roza/test-github-actions-#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
