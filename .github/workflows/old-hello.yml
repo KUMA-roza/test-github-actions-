@@ -37,7 +37,8 @@ jobs:
     acction-sample:
         runs-on: ubuntu-latest
         steps:
-            # "アクション：再利用可能なコードのパッケージで、特定のタスクを実行するために使用されます。アクションは、GitHub Actionsマーケットプレイスから利用できます。"
+            # "アクション"：再利用可能なコードのパッケージで、特定のタスクを実行するために使用されます。
+            # usesとrunは同じステップ内で両方使用することはできません
             - name: Checkout repository
               uses: actions/checkout@v4
               with:
