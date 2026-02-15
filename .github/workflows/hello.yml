@@ -6,6 +6,7 @@ on:
 
 jobs:
   say-hello:
+    # ジョブ全体にifを指定することもできます。
     if: false # This job disabled
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +14,8 @@ jobs:
         run: echo "Hello, World!" > greeting.txt
 
       - name: Upload artifact
+        # ステップ単位でifを指定することもできます。
+        if: false # This step disabled
         uses: actions/upload-artifact@v4
         with:
           name: greeting
