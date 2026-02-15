@@ -1,3 +1,4 @@
+# "ワークフロー"
 name: Hello World
 # on: [push, pull_request]のように、複数のイベントを指定することもできます。
 # ただし、細かい条件は[]で指定する時はできません。
@@ -6,10 +7,13 @@ on:
         branches:
         - main
 jobs:
+    # "ジョブ: 一連のステップを定義する単位。基本的に、ジョブは並列で実行されます。"
     say-hello:
+        # "ランナー：実行環境"
         runs-on: ubuntu-latest
         outputs:
             kuma: ${{ steps.set-kuma.outputs.kuma }}
+        # "ステップ：ジョブ内で実行される個々のタスク。ステップは順番に実行されます。"
         steps:
             - id: set-kuma
             # $GITHUB_OUTPUTは、GitHub Actionsの特定のファイルで、ジョブのステップから出力値を設定するために使用されます。
@@ -30,3 +34,19 @@ jobs:
             - name: Echo poepoe
             # envはそのまま$hogeで呼び出せる
               run: echo "The poepoe is $poepoe"
+    acction-sample:
+        runs-on: ubuntu-latest
+        steps:
+            # "アクション：再利用可能なコードのパッケージで、特定のタスクを実行するために使用されます。アクションは、GitHub Actionsマーケットプレイスから利用できます。"
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                    repository: KUMA-roza/test-github-actions-
+                    ref: "main"
+            - name: Show repository contents
+              run: |
+                echo "=== Repository contents ==="
+                ls -la
+                echo ""
+                echo "=== README.md contents ==="
+                cat README.md || echo "README.md not found"
