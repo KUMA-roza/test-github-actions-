@@ -2,10 +2,22 @@ name: Hello World
 on:
     push:
         branches:
-            - main
+        - main
 jobs:
     say-hello:
         runs-on: ubuntu-latest
+        outputs:
+            greeting-file: ${{ steps.create.outputs.greeting-file }}
         steps:
-            - name: Say Hello
-              run: echo "Hello, World!"
+          - name: Create greeting file
+            id: create
+            run: |
+                echo "Hello, World!" > greeting.txt
+                echo "greeting-file=greeting.txt" >> $GITHUB_OUTPUT
+
+    read-greeting:
+        needs: say-hello
+        runs-on: ubuntu-latest
+        steps:
+          - name: Read Greeting
+            run: cat ${{ needs.say-hello.outputs.greeting-file }}
