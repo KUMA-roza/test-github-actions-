@@ -1,0 +1,19 @@
+name: Hello World
+on:
+    push:
+        branches:
+        - main
+jobs:
+    say-hello:
+        runs-on: ubuntu-latest
+        outputs:
+            kuma: #{{ steps.set-kuma.outputs.kuma }}
+        steps:
+            - id: set-kuma
+              run: echo "kuma=nyanko" >> $GITHUB_OUTPUT
+    read-greeting:
+        needs: say-hello
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read Greeting
+              run: echo "The kuma is ${{ needs.say-hello.outputs.kuma }}"
